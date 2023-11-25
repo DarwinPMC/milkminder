@@ -12,6 +12,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -70,4 +72,8 @@ public class Control {
     @Column(name = "servicio", nullable = false)
     @Enumerated(EnumType.STRING)
     private Serviciotipo servico;
+
+    @ManyToOne
+    @JoinColumn(name = "ganado_id")
+    private Ganado ganado;
 }
