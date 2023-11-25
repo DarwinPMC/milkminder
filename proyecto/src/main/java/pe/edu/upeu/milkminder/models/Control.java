@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,12 +26,21 @@ import lombok.NoArgsConstructor;
 @Table (name ="Control_Vaca")
 public class Control {
 
+    public enum Serviciotipo {//Insertar Manualmente en la tabla global_rol ambas opciones
+        NATURAL, INSEMINACION
+    }
+
+    public enum Etapatipo {//Insertar Manualmente en la tabla global_rol ambas opciones
+        NACIMIENTO, DESTETE, VAQUILLA, VAQUILLONA, PARTO, CAMPANA, SECA, ENFERMEDAD
+    }
+
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "etapa_detalle", nullable = false)
-    private String etapaDetalle;
+    @Enumerated(EnumType.STRING)
+    private Etapatipo etapaDetalle;
     
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Basic(optional = false)
@@ -52,7 +63,11 @@ public class Control {
     private String condicionCorporal;
 
     @Column(name = "tiene_mastitis", nullable = false)
-    private String tieneMastitis;
+    private Boolean tieneMastitis;
     
     private String tratamiento;
+
+    @Column(name = "servicio", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Serviciotipo servico;
 }
