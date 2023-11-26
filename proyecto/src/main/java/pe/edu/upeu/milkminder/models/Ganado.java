@@ -65,6 +65,7 @@ public class Ganado {
     private Raza razaId;  
 
     @OneToMany(mappedBy = "ganado", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Control> control;
     
 }

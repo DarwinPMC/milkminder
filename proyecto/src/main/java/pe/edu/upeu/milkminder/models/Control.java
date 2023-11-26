@@ -3,6 +3,7 @@ package pe.edu.upeu.milkminder.models;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
@@ -74,6 +75,7 @@ public class Control {
     private Serviciotipo servico;
 
     @ManyToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JoinColumn(name = "ganado_id")
     private Ganado ganado;
 }

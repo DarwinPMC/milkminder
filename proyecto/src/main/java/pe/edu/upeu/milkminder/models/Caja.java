@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -57,13 +58,16 @@ public class Caja {
     private Double subTotal;
 
     @OneToOne
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @JoinColumn(name = "finca_id")
     private Finca finca;
 
     @OneToMany(mappedBy = "caja", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Unidadmed> unidadesMed;
 
     @OneToMany(mappedBy = "caja", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private List<Cuenta> cuentas;
 
     
