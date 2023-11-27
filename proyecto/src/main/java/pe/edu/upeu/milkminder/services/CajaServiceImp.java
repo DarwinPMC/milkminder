@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.upeu.milkminder.dtos.CajaDto;
 import pe.edu.upeu.milkminder.models.Caja;
 import pe.edu.upeu.milkminder.repositories.CajaRepository;
+
 @Service
 
-public class CajaServiceImp implements CajaService {
+public class CajaServiceImp  implements CajaService{
     @Autowired
     private CajaRepository cajaRepository;
 
@@ -23,8 +23,8 @@ public class CajaServiceImp implements CajaService {
 
     @Override
     public void eliminarPorId(Long id) {
-        // TODO Auto-generated method stub
         cajaRepository.deleteById(id);
+        
     }
 
     @Override
@@ -44,8 +44,5 @@ public class CajaServiceImp implements CajaService {
         // TODO Auto-generated method stub
         return cajaRepository.findById(id);
     }
-
-    
-    
     
 }
